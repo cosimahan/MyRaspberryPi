@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>RPI Video Stream</title>
+    <link rel="stylesheet" href="/static/css/video-stream.css" type="text/css">
+    <script type="text/javascript" src="/static/js/jquery-2.2.4.min.js"></script>    
+    <!--<script type="text/javascript" src="/static/js/jquery.rotate.js"></script>-->
+    <script type="text/javascript">
+    var phi = 0, flipped = 0, mirrored = 0;
+
+	function setXformClass () {
+		$('.xform').each(function(idx,el) {
+			el.className = "xform x" +(flipped ? "-flipped":"") + (mirrored ? "-mirrored" : "") + "-rotated-" + phi;
+		});
+	}
+    $(document).ready(function() {
+		// set rotation angle phi and toggle rotate class
+		$('#rotate').click(function() {
+			phi = (phi + 90) % 360;
+			setXformClass();
+			if (phi % 180) {
+				$('.xform-p').addClass('rotated');
+			} else {
+				$('.xform-p').removeClass('rotated');
+			}
+		});
+		// toggle mirror class component
+		$('#mirror').click(function() {
+			mirrored = ! mirrored;
+			setXformClass();
+		});
+		// toggle flip class component
+		$('#flip').click(function() {
+			flipped = ! flipped;
+			setXformClass();
+		});
+	});
+    
+    
+	</script>
+  </head>
+  <body>
+    </center/>
+    <p id="xform">
+		<button id="rotate">rotate</button>
+		<button id="mirror">mirror</button>
+		<button id="flip">flip</div></button>
+	</p>
+	<p class="xform-p"></p>
+	<p id="streamwrap" class="xform-p">
+		<img id="streamimage" class="xform" src="" />
+        <!--<img id="streamimage" class="xform" src="./?action=stream_1" />-->
+        <script>
+            //var host1 = window.location.host;
+            var host2 = document.domain;
+            var streamPort = '4000';
+            var streamPath = '?action=stream_0';
+            $('#streamimage').attr("src","http://"+host2+":"+streamPort+"/"+streamPath);
+            console.log("host2 :" + host2  );
+        </script>
+    </p>
+
+    </center/>
+  </body>
+</html>

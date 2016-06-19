@@ -1,0 +1,19 @@
+<!doctype html>
+<title>My Web GPIO</title>
+
+<h1><a href=../>My Web GPIO</a></h1><h2>GPIO</h2>
+
+
+
+ {{ html_ret|safe }}
+
+ {% for pin in html_pins %}
+    {{pin}} <a href=?pin={{pin}}&act=on>on</a> <a href=?pin={{pin}}&act=off>off</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    {{pin+1}} <a href=?pin={{pin+1}}&act=on>on</a> <a href=?pin={{pin+1}}&act=off>off</a><br>
+    
+ {% endfor %}
+
+<!-- 
+<form action="" >
+</form>
+-->

@@ -1,0 +1,51 @@
+<!doctype html>
+<title>My Web GPIO</title>
+<script src="../static/js/jquery-2.2.4.min.js"></script>
+<script>//This script is Send a Get Request
+var pre_url = "";
+function myPost(post_url,post_data)
+{
+    
+    $.post(pre_url+post_url,post_data,function(retdata,retstatus){
+        /*alert("GET :" + retstatus );*/
+        console.log("POSTDATA :" + post_data );
+        console.log("POST RET:" + retdata ); ;
+    });
+    
+}
+
+
+function doSendText(){
+    
+    var speakText = $("#speak-text").val();
+    
+    myPost("#",{text:speakText});
+    
+    
+    
+}
+
+
+</script>
+
+<h1><a href=../>My Web GPIO</a></h1><h2>SPEECH</h2>
+
+
+ {{ html_ret|safe }}
+<br>
+
+<div>
+        <textarea rows="5" cols="60" id="speak-text" placeholder="enter text" type="text" name="speak-text" ></textarea> <br>
+        
+        <button onclick="doSendText()">Speak</button>
+</div>
+
+<br><br><br>
+
+
+
+
+<!-- 
+<form action="" >
+</form>
+-->

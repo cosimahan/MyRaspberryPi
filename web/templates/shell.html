@@ -1,0 +1,52 @@
+<!doctype html>
+<title>My Web GPIO</title>
+<script src="../static/js/jquery-2.2.4.min.js"></script>
+<script>//This script is Send a Get Request
+var pre_url = "";
+function myPost(post_url,post_data)
+{
+    
+    $.post(pre_url+post_url,post_data,function(retdata,retstatus){
+        /*alert("GET :" + retstatus );*/
+        console.log("POSTDATA :" + post_data );
+        console.log("POST RET:" + retdata ); ;
+    });
+    
+}
+
+
+function doSendExec(){
+    
+    var cmd = $("#exec").val();
+    
+    myPost("#",{exec:cmd});
+    
+    
+    
+}
+
+
+</script>
+
+<h1><a href=../>My Web GPIO</a></h1><h2>SHELL</h2>
+
+
+ {{ html_ret|safe }}
+<br>
+
+<div>
+        <textarea rows="5" cols="60" id="exec" placeholder="enter command" type="text" name="exec" ></textarea> <br>
+        
+        <button onclick="doSendExec()">Enter</button>
+</div>
+
+<br><br><br>
+<a href=?exec=sudo%20reboot%20now>reboot</a><br>
+<a href=?exec=sleep%205%20%26%26%20sudo%20shutdown%20now>shutdown</a>
+
+
+
+<!-- 
+<form action="" >
+</form>
+-->
